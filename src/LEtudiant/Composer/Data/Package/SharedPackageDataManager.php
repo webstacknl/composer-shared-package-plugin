@@ -59,7 +59,7 @@ class SharedPackageDataManager implements PackageDataManagerInterface
      */
     protected function updatePackageUsageFile(PackageInterface $package, array $packageData)
     {
-        $packageKey = $package->getPrettyName() . '/' . $package->getPrettyVersion();
+        $packageKey = $package->getPrettyName();
 
         // Remove the row if there is no data anymore
         if (!isset($packageData[0])) {
@@ -156,7 +156,7 @@ class SharedPackageDataManager implements PackageDataManagerInterface
             $this->initializePackageData();
         }
 
-        $packageKey = $package->getPrettyName() . '/' . $package->getPrettyVersion();
+        $packageKey = $package->getPrettyName();
         if (!isset($this->packagesData[$packageKey]) || !isset($this->packagesData[$packageKey][$key])) {
             return $defaultValue;
         }

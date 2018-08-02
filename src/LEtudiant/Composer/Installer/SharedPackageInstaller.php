@@ -82,8 +82,7 @@ class SharedPackageInstaller extends LibraryInstaller
 
         $basePath =
             $this->vendorDir . DIRECTORY_SEPARATOR
-            . $package->getPrettyName() . DIRECTORY_SEPARATOR
-            . $package->getPrettyVersion()
+            . $package->getPrettyName()
         ;
 
         $targetDir = $package->getTargetDir();
@@ -166,7 +165,7 @@ class SharedPackageInstaller extends LibraryInstaller
     {
         if ($this->isSourceDirUnused($package) && $this->io->askConfirmation(
                 "The package version <info>" . $package->getPrettyName() . "</info> "
-                . "(<fg=yellow>" . $package->getPrettyVersion() . "</fg=yellow>) seems to be unused."
+                . " seems to be unused."
                 . PHP_EOL
                 . 'Do you want to <fg=red>delete the source folder</fg=red> ? [y/n] (default: no) : ',
                 false
@@ -209,7 +208,7 @@ class SharedPackageInstaller extends LibraryInstaller
         ) {
             $this->io->write(array(
                 '  - Creating symlink for <info>' . $package->getPrettyName()
-                . '</info> (<fg=yellow>' . $package->getPrettyVersion() . '</fg=yellow>)',
+                . '</info>',
                 ''
             ));
         }
@@ -227,7 +226,6 @@ class SharedPackageInstaller extends LibraryInstaller
             $sourcePath =
                 $this->config->getSymlinkBasePath()
                 . '/' . $package->getPrettyName()
-                . '/' . $package->getPrettyVersion()
                 . ($targetDir ? '/' . $targetDir : '')
             ;
         } else {
@@ -249,8 +247,7 @@ class SharedPackageInstaller extends LibraryInstaller
             && $this->filesystem->removeSymlink($this->getPackageVendorSymlink($package))
         ) {
             $this->io->write(array(
-                '  - Deleting symlink for <info>' . $package->getPrettyName() . '</info> '
-                . '(<fg=yellow>' . $package->getPrettyVersion() . '</fg=yellow>)',
+                '  - Deleting symlink for <info>' . $package->getPrettyName() . '</info> ',
                 ''
             ));
 
